@@ -1,5 +1,5 @@
 provider "google" {
-  project = "terraform-422214"
-  region  = "southamerica-west1"
-  zone    = "southamerica-west1-c"
+  project = var.project_id
+  region  = var.region
+  zone    = "$(var.region)-c"
 }
