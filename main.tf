@@ -2,12 +2,12 @@ module "app_network" {
   source  = "terraform-google-modules/network/google"
   version = "8.1.0"
  
-  network_name = "$(var.network_name)-network"
+  network_name = "${var.network_name}-network"
   project_id   = var.project_id
 
   subnets = [
         {
-          subnet_name     = "$(var.network_name)-subnet0"
+          subnet_name     = "${var.network_name}-subnet0"
           subnet_ip       = var.network_ip_range
           subnet_region   = var.region
         }
@@ -15,11 +15,11 @@ module "app_network" {
 
   ingress_rules = [
     {
-      name                    = "$(var.network_name)-web"
+      name                    = "${var.network_name}-web"
       description             = "inbound web"
 
       source_ranges           = ["0.0.0.0/0"]
-      target_tags             = [$(var.network_name)-web]
+      target_tags             = [${var.network_name}-web]
 
       allow = [
         {
