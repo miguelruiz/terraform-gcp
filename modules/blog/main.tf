@@ -39,14 +39,12 @@ resource "google_compute_network" "app" {
   auto_create_subnetworks = false
 }
 
-/*
 resource "google_compute_subnetwork" "app" {
   name          = var.network_name
   ip_cidr_range = var.network_ip_range
   region        = var.region
   network       = google_compute_network.app.id
 }
-*/ 
 
 data "google_compute_image" "ubuntu" {
   most_recent = true
@@ -66,7 +64,7 @@ resource "google_compute_instance" "blog" {
     }
   }
   network_interface {
-   //subnetwork = module.app_network.subnets_names[0]
+   subnetwork = module.app_network.subnets_names[0]
    access_config {
       # Leave empty for dynamic public IP
     }
