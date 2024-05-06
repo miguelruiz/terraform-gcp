@@ -28,3 +28,4 @@ module "staging" {
 
   app_name = "staging-blog"
   network_name  = "staging"
+}
