@@ -5,7 +5,6 @@ module "app_network" {
   network_name = "${var.network_name}-network"
   project_id   = var.project_id
 
-  /*
   subnets = [
     {
       subnet_name     = "${var.network_name}-subnet0"
@@ -13,8 +12,7 @@ module "app_network" {
       subnet_region   = var.region
     }
   ]
-  */
-  
+
   ingress_rules = [
     {
       name          = "${var.network_name}-web"
