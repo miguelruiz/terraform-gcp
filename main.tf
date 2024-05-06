@@ -6,20 +6,20 @@ module "app_network" {
   project_id   = var.project_id
 
   subnets = [
-        {
-          subnet_name     = "${var.network_name}-subnet0"
-          subnet_ip       = var.network_ip_range
-          subnet_region   = var.region
-        }
+    {
+      subnet_name     = "${var.network_name}-subnet0"
+      subnet_ip       = var.network_ip_range
+      subnet_region   = var.region
+    }
   ]
 
   ingress_rules = [
     {
-      name                    = "${var.network_name}-web"
-      description             = "inbound web"
+      name          = "${var.network_name}-web"
+      description   = "inbound web"
 
-      source_ranges           = ["0.0.0.0/0"]
-      target_tags             = ["${var.network_name}-web"]
+      source_ranges = ["0.0.0.0/0"]
+      target_tags   = ["${var.network_name}-web"]
 
       allow = [
         {
@@ -54,7 +54,6 @@ resource "google_compute_instance" "blog" {
   name         = var.app_name
   machine_type = var.machine_type
 
-  
   boot_disk {
     initialize_params {
       image = data.google_compute_image.ubuntu.self_link
@@ -68,4 +67,5 @@ resource "google_compute_instance" "blog" {
   }  
 
 allow_stopping_for_update = true
+
 }
